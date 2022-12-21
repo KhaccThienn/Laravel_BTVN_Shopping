@@ -20,9 +20,9 @@ class CartController extends Controller
 
     public function show(Cart $cart)
     {
-        $carts = $cart->getCart();
+        $carts_view = $cart->getCart();
         $totalPrice = $cart->getTotalPrice();
-        return view('customers.product.cart', compact('carts', 'totalPrice'));
+        return view('customers.product.cart', compact('carts_view', 'totalPrice'));
     }
 
     public function update_cart(UpdateCartRequest $req, Cart $cart, $id)

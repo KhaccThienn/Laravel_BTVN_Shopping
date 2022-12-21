@@ -70,4 +70,14 @@ class Cart
         }
         return $this->totalPrice;
     }
+
+    public function getTotalQty()
+    {
+        $totalQty = 0;
+        foreach ($this->items as $item) {
+            $totalQty += $item['quantity'];
+        }
+
+        return $totalQty;
+    }
 }

@@ -46,7 +46,8 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $prod->name }}</h4>
-                                    <p class="card-text  {{ $prod->sale_price > 0 ? 'text-danger' : 'text-success' }}">Price:
+                                    <p class="card-text  {{ $prod->sale_price > 0 ? 'text-danger' : 'text-success' }}">
+                                        Price:
                                         $ {{ $prod->price }}</p>
                                     @if ($prod->sale_price > 0)
                                         <p class="card-text text-success">

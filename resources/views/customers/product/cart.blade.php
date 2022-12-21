@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($carts as $index => $ct)
+                @foreach ($carts_view as $index => $ct)
                     <tr>
                         <td style="width: 5%;">
                             {{ $index }}

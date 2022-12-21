@@ -97,9 +97,9 @@
                 @auth
                     <li class="nav-item dropdownss active">
                         <a href="{{ route('shop.show_cart') }}" class="dropbtn nav-link">Cart <span
-                                class="badge badge-success">{{ count($cart) }}</span></a>
+                                class="badge badge-success">{{ $carts->getTotalQty() }}</span></a>
                         <div class="dropdown-content">
-                            @foreach ($cart as $ct)
+                            @foreach ($cartss as $ct)
                                 <a href="{{ route('shop.detail', $ct['product_id']) }}">
                                     <div class="d-flex align-items-center">
                                         <div class="img" style="width: 15%;">
