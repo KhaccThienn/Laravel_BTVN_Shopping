@@ -25,10 +25,12 @@ composer install
 
 **3, Running this command to copy .env.example to .env file (required)**
 <p>If you use Command Prompt Windows: </p>
+
 ```bash
 composer install
 ```
 <p>If you use Terminal, Ubuntu: </p>
+
 ```bash
 composer install
 ```
