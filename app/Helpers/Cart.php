@@ -66,15 +66,7 @@ class Cart
         foreach($this->items as $item) {
             $this->totalPrice += $item['quantity'] * $item['price'];
         }
-
         return $this->totalPrice;
-
-        // for ($i = 1; $i <= Product::max('id'); $i++) {
-        //     if (isset($this->items[$i])) {
-        //         $this->totalPrice += $this->items[$i]['price'] * $this->items[$i]['quantity'];
-        //     }
-        // }
-        // return $this->totalPrice;
     }
 
     public function getTotalQty()

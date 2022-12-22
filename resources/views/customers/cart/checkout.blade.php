@@ -8,7 +8,7 @@
             <div class="col-md-4">
                 <h2>Order Detail: </h2>
                 @if (count($cart->getCart()) > 0)
-                    <form action="" method="POST" role="form">
+                    <form action="{{ route('order.post_checkout') }}" method="POST" role="form">
                         @csrf
                         <div class="form-group">
                             <label for="">Name</label>
@@ -32,7 +32,7 @@
                 @endif
             </div>
             <div class="col-md-8">
-                <h2>Your Cart: Quantity: {{ number_format($cart->getTotalQty(), 2, '.', ',') }}, Total Price:
+                <h2>Your Cart: Quantity: {{ number_format($cart->getTotalQty(), 0, '.', ',') }}, Total Price:
                     {{ number_format($cart->getTotalPrice(), 2, '.', ',') }} đ
                 </h2>
 
@@ -46,7 +46,6 @@
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Sub Total</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,31 +54,13 @@
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $item['name'] }}</td>
                                     <td>{{ number_format($item['price']) }} đ</td>
-                                    <td>
-                                        <form action="{{ route('shop.update_cart', $item['product_id']) }}" method="POST">
-                                            @csrf
-                                            <input type="number" name="quantity" value="{{ $item['quantity'] }}"
-                                                style="width:80px; text-align: center">
-                                            <button class="btn btn-sm btn-success">Update</button>
-                                        </form>
-                                    </td>
+                                    <td>{{ $item['quantity'] }}</td>
                                     <td>{{ number_format($item['quantity'] * $item['price']) }} đ</td>
-                                    <td>
-                                        <a href="{{ route('shop.delete_cart', $item['product_id']) }}"
-                                            class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Bạn có chắc không?')">Delete</a>
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 @else
-                    <div class="alert alert-danger">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Giỏ hàng rỗng</strong> Giỏ hàng đang rỗng, <a href="{{ route('home.index') }}">hãy click
-                            vào
-                            đây</a> để tiếp tục mua hàng
-                    </div>
                 @endif
             </div>
         </div>

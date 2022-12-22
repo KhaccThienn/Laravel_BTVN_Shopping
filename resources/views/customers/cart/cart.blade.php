@@ -70,18 +70,15 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="{{ route('home.index') }}" class="btn btn-sm btn-primary">Tiếp tục mua hàng</a>
+                <a href="{{ route('home.index') }}" class="btn btn-sm btn-primary">Continue Shopping</a>
                 <a href="{{ route('shop.clear_cart') }}" class="btn btn-sm btn-danger"
-                    onclick="return confirm('Bạn có chắc không?')">Xóa
-                    hết</a>
-                <a href="{{ route('order.checkout') }}" class="btn btn-sm btn-success">Đặt hàng</a>
+                    onclick="return confirm('Do you want to delete all items ?')">Delete All</a>
+                <a href="{{ route('order.checkout') }}" class="btn btn-sm btn-success">Order Now</a>
             </div>
         @else
             <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <strong>Giỏ hàng rỗng</strong> Giỏ hàng đang rỗng, <a href="{{ route('home.index') }}">hãy click vào
-                    đây</a> để tiếp
-                tục mua hàng
+                </strong>Empty Cart, <a href="{{ route('home.index') }}">click here</a> to continue shopping
             </div>
 
         @endif
