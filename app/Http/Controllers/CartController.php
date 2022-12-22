@@ -22,20 +22,26 @@ class CartController extends Controller
     {
         $carts_view = $cart->getCart();
         $totalPrice = $cart->getTotalPrice();
-        return view('customers.product.cart', compact('carts_view', 'totalPrice'));
+        return view('customers.cart.cart', compact('carts_view', 'totalPrice'));
     }
 
     public function update_cart(UpdateCartRequest $req, Cart $cart, $id)
     {
         $product = Product::find($id);
         $cart->update($req->quantity, $product);
-        return redirect()->route('shop.show_cart');
+        return redirect()->back();
     }
 
     public function delete(Cart $cart, $id)
     {
         $product = Product::find($id);
         $cart->delete($product);
+        return redirect()->back();
+    }
+
+    public function clear(Cart $cart)
+    {
+        $cart->clear();
         return redirect()->route('shop.show_cart');
     }
 }

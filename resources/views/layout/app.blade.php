@@ -103,7 +103,7 @@
                                 <a href="{{ route('shop.detail', $ct['product_id']) }}">
                                     <div class="d-flex align-items-center">
                                         <div class="img" style="width: 15%;">
-                                            <img src="uploads/{{ $ct['image'] }}" alt="" class="card-img">
+                                            <img src="{{ url('') }}/uploads/{{ $ct['image'] }}" alt="" class="card-img">
                                         </div>
                                         <div class="text">
                                             <p class="p-0"> {{ $ct['name'] }}</p>

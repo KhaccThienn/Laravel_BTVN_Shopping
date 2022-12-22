@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProductController;
@@ -31,7 +32,19 @@ Route::group(['prefix' => ''], function () {
         Route::post('/{id}', [CartController::class, 'add_to_cart'])->name('shop.cart');
         Route::post('/update/{id}', [CartController::class, 'update_cart'])->name('shop.update_cart');
         Route::get('/delete/{id}', [CartController::class, 'delete'])->name('shop.delete_cart');
+        Route::get('/clear', [CartController::class, 'clear'])->name('shop.clear_cart');
     });
+
+    Route::group(['prefix' => 'order', 'middleware' => 'user'], function () {
+        Route::get('checkout', [OrderController::class, 'checkout'])->name('order.checkout');
+        Route::post('checkout', [OrderController::class, 'post_checkout']);
+
+        Route::get('order-success', [OrderController::class, 'order_success'])->name('order.success');
+
+        Route::get('history', [OrderController::class, 'history'])->name('order.history');
+        Route::get('detail/{order}', [OrderController::class, 'detail'])->name('order.detail');
+    });
+
 
     Route::prefix('/user')->group(function () {
 

@@ -63,21 +63,32 @@ class Cart
 
     public function getTotalPrice()
     {
-        for ($i = 1; $i <= Product::max('id'); $i++) {
-            if (isset($this->items[$i])) {
-                $this->totalPrice += $this->items[$i]['price'] * $this->items[$i]['quantity'];
-            }
+        foreach($this->items as $item) {
+            $this->totalPrice += $item['quantity'] * $item['price'];
         }
+
         return $this->totalPrice;
+
+        // for ($i = 1; $i <= Product::max('id'); $i++) {
+        //     if (isset($this->items[$i])) {
+        //         $this->totalPrice += $this->items[$i]['price'] * $this->items[$i]['quantity'];
+        //     }
+        // }
+        // return $this->totalPrice;
     }
 
     public function getTotalQty()
     {
-        $totalQty = 0;
-        foreach ($this->items as $item) {
-            $totalQty += $item['quantity'];
+        $total = 0;
+        foreach($this->items as $item) {
+            $total += $item['quantity'];
         }
 
-        return $totalQty;
+        return $total;
     }
+    public function clear()
+    {
+        session(['cart' => null]);
+    }
+
 }
