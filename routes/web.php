@@ -25,8 +25,8 @@ Route::group(['prefix' => ''], function () {
     Route::get('/', [PagesController::class, 'index'])->name('home.index');
     Route::get('/shop', [PagesController::class, 'shop'])->name('shop.index');
     Route::get('/shop/{id}', [PagesController::class, 'shop_cate'])->name('shop.shop_cate');
-    // Route::get('/{slug}_{id}', [PagesController::class, 'detail'])->name('shop.detail');
-    Route::get('/detail/{id}', [PagesController::class, 'detail'])->name('shop.detail');
+    Route::get('/detail/{id}_{slug}', [PagesController::class, 'detail'])->name('shop.detail');
+    // Route::get('/detail/{id}', [PagesController::class, 'detail'])->name('shop.detail');
 
     Route::group(['prefix'=>'cart', 'middleware' => 'user'], function () {
         Route::get('/', [CartController::class, 'show'])->name('shop.show_cart')->middleware('user');

@@ -100,7 +100,7 @@
                                 class="badge badge-success">{{ $carts->getTotalQty() }}</span></a>
                         <div class="dropdown-content">
                             @foreach ($cartss as $ct)
-                                <a href="{{ route('shop.detail', $ct['product_id']) }}">
+                                <a href="{{ route('shop.detail', ['id' => $ct['product_id'], "slug" => slug_format($ct['name'])]) }}">
                                     <div class="d-flex align-items-center">
                                         <div class="img" style="width: 15%;">
                                             <img src="{{ url('') }}/uploads/{{ $ct['image'] }}" alt="" class="card-img">

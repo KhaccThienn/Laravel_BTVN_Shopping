@@ -37,7 +37,7 @@
                 <div class="row">
                     @foreach ($allProds as $prod)
                         <div class="card col-lg-3 mt-3">
-                            <a href="{{ route('shop.detail', $prod->id) }}" class="text-dark text-decoration-none">
+                            <a href="{{ route('shop.detail', ["id" => $prod->id, "slug" => slug_format($prod->name)]) }}" class="text-dark text-decoration-none">
                                 <img class="card-img-top" src="/uploads/{{ $prod->image }}" alt="">
                                 <div class="card-img-overlay">
                                     {!! $prod->status == 1

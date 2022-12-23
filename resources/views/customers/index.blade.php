@@ -54,9 +54,8 @@
                 <div class="row">
                     @forelse ($newProducts as $np)
                         <div class="card col-lg-3 mt-3 border-0" style="width: 18rem;">
-                            {{-- <a href="{{ route('shop.detail', ['slug' => slug_format($np->name), 'id' => $np->id]) }}" --}}
-                            <a href="{{ route('shop.detail', $np->id) }}" class="text-decoration-none text-dark">
-
+                            <a href="{{ route('shop.detail', ['id' => $np->id, 'slug' => slug_format($np->name)]) }}"
+                                class="text-decoration-none">
                                 <img src="uploads/{{ $np->image }}" class="card-img-top" alt="...">
                                 <div class="card-img-overlay">
                                     {!! $np->status == 1
@@ -96,8 +95,7 @@
                 <div class="row">
                     @forelse ($randomProducts as $np)
                         <div class="card col-lg-3 mt-3 border-0" style="width: 18rem;">
-                            {{-- <a href="{{ route('shop.detail', ['slug' => $np->name, 'id' => $np->id]) }}" --}}
-                            <a href="{{ route('shop.detail', $np->id) }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('shop.detail', ['id' => $np->id, "slug" => slug_format($np->name)]) }}" class="text-decoration-none">
                                 <img src="uploads/{{ $np->image }}" class="card-img-top" alt="...">
                                 <div class="card-img-overlay">
                                     {!! $np->status == 1
@@ -136,8 +134,7 @@
                 <div class="row">
                     @forelse ($saleProducts as $np)
                         <div class="card col-lg-3 mt-3 border-0" style="width: 18rem;">
-                            {{-- <a href="{{ route('shop.detail', ['slug' => $np->name, 'id' => $np->id]) }}" --}}
-                            <a href="{{ route('shop.detail', $np->id) }}" class="text-decoration-none text-dark">
+                            <a href="{{ route('shop.detail', ['id' => $np->id, "slug" => slug_format($np->name)]) }}" class="text-decoration-none">
 
                                 class="text-decoration-none text-dark">
                                 <img src="uploads/{{ $np->image }}" class="card-img-top" alt="...">
