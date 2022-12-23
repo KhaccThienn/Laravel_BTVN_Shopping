@@ -20,7 +20,7 @@
                 @foreach ($customer->orders as $order)
                     <tr>
                         <td class="text-center">{{ $loop->index + 1 }}</td>
-                        <td>{{ $order->created_at->format('d/m/yy') }}</td>
+                        <td>{{ $order->created_at->format('d/m/Y') }}</td>
                         <td>{{ number_format($order->totalPrice()) }} đ</td>
                         <td>
                             @if ($order->status == 0)

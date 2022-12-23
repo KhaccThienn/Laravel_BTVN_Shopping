@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Helpers\Cart;
 use App\Models\Order;
+use App\Mail\OrderShipped;
 use App\Models\OrderDetail;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -32,14 +34,16 @@ class OrderController extends Controller
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
                 ];
-
                 OrderDetail::create($detail);
             }
+
+            $email = $req->email;
+            $name = $req->name;
+            Mail::to('muzankibut112@gmail.com')->send(new OrderShipped($email, $name));
             $cart->clear();
 
             return redirect()->route('order.success');
         }
-
         return redirect()->back()->with('message', 'Please Try Again');
     }
     public function history()

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -17,6 +19,7 @@ class PagesController extends Controller
     }
     public function sign_up()
     {
+
         return view('customers.account.signup');
     }
     public function shop()
