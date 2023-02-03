@@ -29,14 +29,19 @@
                 <p>{{ $prod->description ?? 'NULL' }}</p>
 
                 @auth
-                    <form action="{{ route('shop.cart', $prod->id) }}" method="post">
-                        @csrf
-                        <input type="text" name="quantity" value="1" class="form-control @error('quantity') is-invalid @enderror">
-                        @error('quantity')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                        <button type="submit" class="btn btn-block btn-outline-success"><i class="fa fa-cart-plus"></i></button>
-                    </form>
+                    @if ($prod->status == 1)
+                        <form action="{{ route('shop.cart', $prod->id) }}" method="post">
+                            @csrf
+                            <input type="text" name="quantity" value="1" class="form-control @error('quantity') is-invalid @enderror">
+                            @error('quantity')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <button type="submit" class="btn btn-block btn-outline-success"><i class="fa fa-cart-plus"></i></button>
+                        </form>
+                    @else
+                        <p>This product is out of stock right now, <a href="{{ route('shop.index') }}">Return to shop</a></p>
+                    @endif
+
                 @else
                     <a href="{{ route('user.sign-in') }}" class="btn btn-outline-primary rounded-0">
                         Login To Buy This Item<span class="badge badge-primary"></span>

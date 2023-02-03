@@ -39,7 +39,7 @@ class OrderController extends Controller
 
             $email = $req->email;
             $name = $req->name;
-            Mail::to('muzankibut112@gmail.com')->send(new OrderShipped($email, $name));
+            Mail::to($email)->send(new OrderShipped($email, $name));
             $cart->clear();
 
             return redirect()->route('order.success');
