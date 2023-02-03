@@ -197,18 +197,6 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
-                    <div class="image">
-                        <img src="{{ url('') }}/dist/img/z3498191498514_c3833a8c1f811ca8758b795de3ac63ce.jpg"
-                            class="card-img" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">
-                            Tsumetaku
-                        </a>
-                    </div>
-                </div>
-
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">

@@ -26,17 +26,8 @@ class UserRegisterRequest extends FormRequest
         return [
             'name' => 'bail|required|min:8|max:100|',
             'email' => 'bail|required|email|min:15|max:50|unique:users,email',
-            'phone' => ["bail","required","regex:/^(0[3|5|7|8|9])+([0-9]{8})$/"],
-            'birthday' => 'bail|required|date|before:2004-01-01',
             'password' => 'bail|required|min:6|max:20|confirmed:password_confirmation',
             'password_confirmation' => 'bail|required|min:6',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'birthday.before' => "You are under 18 years old, can't register an account"
         ];
     }
 }

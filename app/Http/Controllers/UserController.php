@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\User\UserLoginRequest;
@@ -13,10 +12,12 @@ class UserController extends Controller
 {
     public function store(UserRegisterRequest $req)
     {
-        $req->validated();
         $password = Hash::make($req->password);
-        $req->merge(['password' => $password]);
-        User::create($req->all());
+        User::create([
+            "name" => $req->name,
+            "email" => $req->email,
+            "password" => $password,
+        ]);
 
         return redirect()->route('user.sign-in')->with('alert', 'Sign Up Successfully !');
     }
