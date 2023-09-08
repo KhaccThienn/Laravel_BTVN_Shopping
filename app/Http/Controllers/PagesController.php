@@ -35,12 +35,6 @@ class PagesController extends Controller
         return view('customers.product.index', compact('allProds'));
     }
 
-    // public function detail($slug, $id)
-    // {
-    //     $prod = Product::find();
-    //     return view('customers.product.detail', compact('prod'));
-    // }
-
     public function detail($id, $slug)
     {
         $prod = Product::find($id);

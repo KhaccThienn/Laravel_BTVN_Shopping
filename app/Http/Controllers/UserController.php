@@ -54,6 +54,8 @@ class UserController extends Controller
 
     public function doLogon(UserLoginRequest $request)
     {
+        // dd(Auth::user());
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 1])) {
             return redirect()->route('admin.index');
         } else {

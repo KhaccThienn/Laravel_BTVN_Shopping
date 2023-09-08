@@ -26,7 +26,6 @@ Route::group(['prefix' => ''], function () {
     Route::get('/shop', [PagesController::class, 'shop'])->name('shop.index');
     Route::get('/shop/{id}', [PagesController::class, 'shop_cate'])->name('shop.shop_cate');
     Route::get('/detail/{id}_{slug}', [PagesController::class, 'detail'])->name('shop.detail');
-    // Route::get('/detail/{id}', [PagesController::class, 'detail'])->name('shop.detail');
 
     Route::group(['prefix'=>'cart', 'middleware' => 'user'], function () {
         Route::get('/', [CartController::class, 'show'])->name('shop.show_cart')->middleware('user');
@@ -46,18 +45,16 @@ Route::group(['prefix' => ''], function () {
         Route::get('detail/{order}', [OrderController::class, 'detail'])->name('order.detail');
     });
 
-
     Route::prefix('/user')->group(function () {
-
-        Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
-
         Route::get('/sign-up', [PagesController::class, 'sign_up'])->name('user.sign-up');
-        Route::post('/store', [UserController::class, 'store'])->name('user.store');
-
         Route::get('/sign-in', [UserController::class, 'sign_in'])->name('user.sign-in');
         Route::post('/login', [UserController::class, 'login'])->name('user.login');
+        Route::post('/store', [UserController::class, 'store'])->name('user.store');
 
-        Route::get('/sign-out', [UserController::class, 'sign_out'])->name('user.sign-out');
+        Route::group(['prefix' => '', 'middleware' => 'user'], function () {
+            Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+            Route::get('/sign-out', [UserController::class, 'sign_out'])->name('user.sign-out');
+        });
     });
 });
 
