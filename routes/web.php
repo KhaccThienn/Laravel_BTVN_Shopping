@@ -27,7 +27,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/shop/{id}', [PagesController::class, 'shop_cate'])->name('shop.shop_cate');
     Route::get('/detail/{id}_{slug}', [PagesController::class, 'detail'])->name('shop.detail');
 
-    Route::group(['prefix'=>'cart', 'middleware' => 'user'], function () {
+    Route::group(['prefix' => 'cart', 'middleware' => 'user'], function () {
         Route::get('/', [CartController::class, 'show'])->name('shop.show_cart')->middleware('user');
         Route::post('/{id}', [CartController::class, 'add_to_cart'])->name('shop.cart');
         Route::post('/update/{id}', [CartController::class, 'update_cart'])->name('shop.update_cart');
@@ -72,6 +72,10 @@ Route::middleware('admin')->prefix("admin")->group(function () {
     Route::get('/account/recycle-bin', [AccountController::class, 'recycle_bin'])->name('account.recycle_bin');
     Route::get('/account/restore/{id}', [AccountController::class, 'restored'])->name('account.restore');
     Route::delete('/account/delete/{id}', [AccountController::class, 'force_delete'])->name('account.force_delete');
+
+    Route::prefix('exports')->group(function () {
+        Route::get('product', [ProductController::class, 'exports'])->name('product.exports');
+    });
 
     Route::resources([
         'category' => CategoryController::class,

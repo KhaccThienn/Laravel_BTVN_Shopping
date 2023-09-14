@@ -18,6 +18,7 @@
         <div class="row align-items-center">
             <div class="add col-lg-6">
                 <a href="{{ route('product.create') }}" class="btn btn-outline-success rounded-0">Add &plus;</a>
+                <a href="{{ route('product.exports') }}" class="btn btn-outline-success rounded-0">Export</a>
                 <a href="{{ route('product.recycle_bin') }}" class="btn btn-outline-warning rounded-0">
                     <i class="fa fa-trash"></i>
                 </a>

@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProductExport;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Product\ProductStoreRequest;
 use App\Http\Requests\Product\ProductUpdateRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
+    public function exports()
+    {
+        return Excel::download(new ProductExport, 'product.xlsx');
+    }
+
     public function index()
     {
         $products = Product::search()->orderBy('id', 'desc')->paginate(3);

@@ -6,11 +6,9 @@ use App\Models\Product;
 
 class Cart
 {
-    // private $item = [];
     private $items = [];
 
     private $totalPrice = 0;
-    private $totalQty = 0;
 
     public function __construct()
     {
@@ -78,10 +76,9 @@ class Cart
 
         return $total;
     }
-    
+
     public function clear()
     {
         session(['cart' => null]);
     }
-
 }
